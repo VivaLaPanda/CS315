@@ -38,13 +38,7 @@ bool is_lat(list p)
 }
 
 bool member (list p, list q)
-{
-	// Checks to make sure we are actually looking at atoms.
-	if (!is_atom(p) || !is_atom(car(q)))
-	{
-		throw "Member preconditions not met";
-	}
-	
+{	
 	// Is the first element of q p?
 	if (eq(car(q), p))
 	{
@@ -53,62 +47,20 @@ bool member (list p, list q)
 	else
 	{
 		// Does q only have one element
-		if (is_null(cdr(p)))
+		if (is_null(cdr(q)))
 		{
 			return false;
 		}
 		
 		// If there are other elements, recurse!
-		return member(cdr(q));
-	}
-}
-
-bool nonAtomicMember (list p, list q)
-{
-	// Is the first element of q p?
-	if (equal(car(q), p))
-	{
-		return true;
-	}
-	else
-	{
-		// Does p only have one element
-		if (is_null(cdr(p)))
-		{
-			return false;
-		}
-		
-		// If there are other elements, recurse!
-		return member(cdr(p));
-	}
-}
-
-list deletepfromq (list p, list q)
-{
-	// If p is in q
-	if (nonAtomicMember(p, q))
-	{
-		// If p is the first element of q
-		if (equal(p, car(q)))
-		{
-			// Get em outa here!
-			return cdr(q);
-		}
-		
-		// Keep looking
-		return cons(car(q), deletepfromq(p, cdr(q)));
-	}
-	
-	if (is_null(cdr(q)))
-	{
-		return q;
+		return member(p, cdr(q));
 	}
 }
 
 list last (list p)
 {
 	// Does p have only one element?
-	if (is_null(cdr(p))
+	if (is_null(cdr(p)))
 	{
 		// Return the only element
 		return car(p);
@@ -126,29 +78,29 @@ list list_pair (list p, list q)
 	}
 	
 	// Does p have only one element?
-	if (is_null(cdr(p))
+	if (is_null(cdr(p)))
 	{
 		// Return a list of the last elements of both lists
-		return append(car(list p), car(list q));
+		return cons(cons(car(p), cons(car(q), null())), null());
 	}
 	
 	// Append the first two elements of p and q
 	// Append that with pairs from the rest of the elements
-	return append(append(car(list p), car(list q)), list_par(cdr(p), cdr(q)));
+	return cons(cons(car(p), cons(car(q), null())), list_pair(cdr(p), cdr(q)));
 }
 
 list firsts (list p)
 {
 	// Does p have only one element?
-	if (is_null(cdr(p))
+	if (is_null(cdr(p)))
 	{
 		// Return the only element
-		return car(car(p));
+		return cons(car(car(p)), null());
 	}
 	
 	// Return the first element of the first list
 	// Appended to the first elements of the remaining lists
-	return append(car(car(p)), firsts(cdr(p)));
+	return cons(car(car(p)), firsts(cdr(p)));
 }
 
 list flat (list p)
@@ -156,20 +108,17 @@ list flat (list p)
 	// If the list is an atom, just return that
 	if (is_atom(p))
 	{
+		return cons(p, null());
+	}
+	else if (is_null(p))
+	{
 		return p;
 	}
 	
-	// If the first element is null, just recurse and ignore ir.
-	if (is_null(car(p)))
-	{
-		return flat(cdr(p));
-	}
-	else
-	{
-		// Return the flattened first element with the flattend
-		// remaining elements
-		return append(flat(car(p)), flat(cdr(p)));
-	}
+	// Return the flattened first element with the flattend
+	// remaining elements
+	return append(flat(car(p)), flat(cdr(p)));
+	
 }
 
 bool two_the_same(list p, list q)
@@ -183,7 +132,7 @@ bool two_the_same(list p, list q)
 	
 	// Does p have only one element?
 	// Well, we just looked and it wasn't in q, so no luck
-	if (is_null(cdr(p))
+	if (is_null(cdr(p)))
 	{
 		// Nothing in p exists in q
 		return false;
@@ -213,9 +162,9 @@ bool equal (list p, list q)
 	}
 	
 	// Either p or q have only one element?
-	if (is_null(cdr(p))
+	if (is_null(cdr(p)))
 	{
-		if (is_null(cdr(q))
+		if (is_null(cdr(q)))
 		{
 			// Check if that element is equal
 			return equal(car(p), car(q));
@@ -235,7 +184,9 @@ bool equal (list p, list q)
 list total_reverse(list p)
 {
 	// If we get an atom or null, just give it back.
-	if (is_atom(p) || is_null(p))
+	if (is_atom(p))
+		return cons(p, null());
+	if (is_null(p))
 		return p;
 	
 	// If the list is all atoms, reverse it.
@@ -245,14 +196,14 @@ list total_reverse(list p)
 	}
 	
 	// Does p have only one element?
-	if (is_null(cdr(p))
+	if (is_null(cdr(p)))
 	{
 		// Reverse the only element
 		return total_reverse(car(p));
 	}
 	
 	// Reverse all elements of p in place, and the reverse the whole list
-	return reverse(append(total_reverse(car(p)), total_reverse(cdr(p))));
+	return cons(total_reverse(cdr(p)), total_reverse(car(p)));
 }
 
 list shape(list p)
@@ -268,7 +219,7 @@ list shape(list p)
 	}
 	
 	// Does p have only one element?
-	if (is_null(cdr(p))
+	if (is_null(cdr(p)))
 	{
 		// return it's shape
 		return shape(car(p));
@@ -278,31 +229,8 @@ list shape(list p)
 	return cons(shape(car(p)), shape(cdr(p)));
 }
 
-list intersetction(list p, list q)
+list intersection(list p, list q)
 {
-	// Does p have only one element?
-	if (is_null(p)
-	{
-		// return p
-		return p;
-	}
-	
-	// If the first element of p is an element of q
-	if (nonAtomicMember(car(p), q))
-	{
-		// Combine the first element with any others that match
-		return cons(car(p), intersection(cdr(p)));  
-	}
-	else
-	{
-		// Keep looking
-		return intersection(cdr(p));
-	}
-}
-
-list list_union(list p, list q)
-{
-	
 	// Does p have only one element?
 	if (is_null(p))
 	{
@@ -310,15 +238,36 @@ list list_union(list p, list q)
 		return p;
 	}
 	
+	// If the first element of p is an element of q
+	if (member(car(p), q))
+	{
+		// Combine the first element with any others that match
+		return cons(car(p), intersection(cdr(p), q));  
+	}
+	else
+	{
+		// Keep looking
+		return intersection(cdr(p), q);
+	}
+}
+
+list list_union(list p, list q)
+{
+	if (is_null(p))
+	{
+		// return p
+		return q;
+	}
+	
 	// If the first element of p isn't an element of q
-	if (!nonAtomicMember(car(p), q))
+	if (!member(car(p), q))
 	{
 		// Keep it 
-		return = cons(car(p), list_union(cdr(p), q));  
+		return list_union(cdr(p), append(q, cons(car(p), null())));  
 	}
 	else
 	{
 		// Look at the next element of p
-		return list_union(cdr(p), deletepfromq(car(p), q));
+		return list_union(cdr(p), q);
 	}
 }

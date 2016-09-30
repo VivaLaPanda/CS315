@@ -27,8 +27,7 @@ int main()
 
 	// Move the following pre-processor line down as you write a solution for each of
 	// the functions.  
-
-	#ifdef __A_NON_DEFINED_NAME         
+      
 
      // member
      cout << "Enter two lists for member (an atom followed by a list):\n";
@@ -72,7 +71,7 @@ int main()
      cout << "Enter two lists for equal: ";
      p = read_list();
      q = read_list();
-     cout << equal(p, q) ) << endl;
+     cout << equal(p, q) << endl;
 
      // total_reverse
      cout << "Enter a list for total reverse: ";
@@ -94,10 +93,13 @@ int main()
      p = read_list();
      q = read_list();
      write_list( list_union(p, q) );
-
+	#ifdef __A_NON_DEFINED_NAME
+	   
      // permute 
      cout << "Enter a list for permute: ";
      write_list( permute( read_list() ) );
-#endif
+	 
+ 
+	#endif
      return 0;
 }
