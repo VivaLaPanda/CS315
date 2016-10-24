@@ -1,0 +1,84 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_MOD_BY	Bostjan Mihoric	/ccompletion@gmail.com/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	/unofficial modification/
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	/unofficial modification/
+Cell	cell.cpp	3;"	function	class:Cell
+Cell	cell.cpp	8;"	function	class:Cell
+Cell	cell.hpp	1;"	class
+Cell	cell.hpp	4;"	prototype	class:Cell
+Cell	cell.hpp	5;"	prototype	class:Cell
+SEC_DELAY	getChar.cpp	12;"	variable
+ScreenState	screenState.cpp	11;"	function	class:ScreenState
+ScreenState	screenState.hpp	11;"	function	class:ScreenState
+ScreenState	screenState.hpp	12;"	prototype	class:ScreenState
+ScreenState	screenState.hpp	8;"	class
+USEC_DELAY	getChar.cpp	13;"	variable
+above	cell.cpp	13;"	function	class:Cell
+above	cell.hpp	7;"	prototype	class:Cell
+allCellsUnusedTest	test.cpp	14;"	prototype	file:
+allCellsUnusedTest	test.cpp	83;"	function
+below	cell.cpp	17;"	function	class:Cell
+below	cell.hpp	8;"	prototype	class:Cell
+c	getChar.cpp	19;"	local
+cellCount	screenState.cpp	30;"	local
+cellOutOfBoundsException	screenState.cpp	3;"	class	file:
+cellOutOfBoundsException	screenState.cpp	9;"	variable
+cellUseTest	test.cpp	15;"	prototype	file:
+cellUseTest	test.cpp	56;"	function
+die	getChar.cpp	15;"	prototype	file:
+die	getChar.cpp	42;"	function
+elementToRemove	screenState.cpp	52;"	local
+elementToSwap	screenState.cpp	51;"	local
+endl	test.cpp	51;"	member	class:std	file:
+freePool	screenState.hpp	24;"	member	class:ScreenState
+freePoolSize	screenState.hpp	29;"	member	class:ScreenState
+getHeight	screenState.hpp	14;"	function	class:ScreenState
+getWidth	screenState.hpp	13;"	function	class:ScreenState
+get_char	getChar.cpp	17;"	function
+get_char	getChar.hpp	1;"	prototype
+growSnakeHead	screenState.cpp	113;"	function	class:ScreenState
+growSnakeHead	screenState.hpp	20;"	prototype	class:ScreenState
+growSnakeHead	test.cpp	40;"	prototype	file:
+growSnakeHead	test.cpp	41;"	prototype	file:
+growSnakeHead	test.cpp	42;"	prototype	file:
+height	screenState.hpp	27;"	member	class:ScreenState
+isCellUsed	screenState.cpp	83;"	function	class:ScreenState
+isCellUsed	screenState.hpp	18;"	prototype	class:ScreenState
+lastc	getChar.cpp	14;"	variable	file:
+left	cell.cpp	21;"	function	class:Cell
+left	cell.hpp	9;"	prototype	class:Cell
+main	main.cpp	13;"	function
+main	test.cpp	17;"	function
+moveSnakeHead	screenState.cpp	95;"	function	class:ScreenState
+moveSnakeHead	screenState.hpp	19;"	prototype	class:ScreenState
+newCell	screenState.cpp	34;"	prototype	file:
+newCell	test.cpp	86;"	prototype	file:
+retval	getChar.cpp	28;"	local
+rfds	getChar.cpp	21;"	local
+right	cell.cpp	25;"	function	class:Cell
+right	cell.hpp	10;"	prototype	class:Cell
+savedFreePoolSize	screenState.cpp	49;"	local
+screen	screenState.hpp	23;"	member	class:ScreenState
+setCellUnused	screenState.cpp	71;"	function	class:ScreenState
+setCellUnused	screenState.hpp	17;"	prototype	class:ScreenState
+setCellUsed	screenState.cpp	44;"	function	class:ScreenState
+setCellUsed	screenState.hpp	16;"	prototype	class:ScreenState
+setCellUsed	test.cpp	70;"	prototype	file:
+startup	main.cpp	19;"	function
+state1	test.cpp	19;"	local
+state4	test.cpp	29;"	local
+tempCell	screenState.cpp	56;"	local
+terminate	main.cpp	29;"	function
+tvec	getChar.cpp	20;"	local
+usedIndex	screenState.cpp	50;"	local
+what	screenState.cpp	4;"	function	class:cellOutOfBoundsException	file:
+width	screenState.hpp	26;"	member	class:ScreenState
+wormCells	screenState.hpp	25;"	member	class:ScreenState
+wormCellsSize	screenState.hpp	32;"	member	class:ScreenState
+wormHead	screenState.hpp	30;"	member	class:ScreenState
+wormTail	screenState.hpp	31;"	member	class:ScreenState
+x	cell.hpp	12;"	member	class:Cell
+y	cell.hpp	13;"	member	class:Cell
